@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;600;700&display=swap');
+
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+    width: 100%;
+    background-image: url("../images/hero-background.png");
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.hero-content {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: max-content;
+
+    * {
+        /* Bring everything except the glow behind up */
+        z-index: 10;
+    }
+
+    &:before {
+        position: absolute;
+        content: "";
+        height: 200px;
+        width: 200px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.7);
+        box-shadow: 0 0 120px 120px rgba(255, 255, 255, 0.7);
+    }
+}
+
+.hero-heading {
+    color: #3A6332;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+}
+
+.hero-buttons {
+    display: flex;
+    width: max-content;
+}
+
+.hero-buttons a {
+    padding: 10px 25px;
+    background-color: #3A6332;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 0 10px;
+    border: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.hero-buttons a:first-child button {
+    background-color: #D4B36D;
+}
+
+.hero-search-bar {
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
