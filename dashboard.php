@@ -19,6 +19,40 @@ if (isset($_POST['update_booking'])) {
     mysqli_query($conn, "UPDATE bookings SET status='$new_status' WHERE id=$b_id");
 }
 
+// Handle package removal (Admin only)
+if (isset($_POST['remove_package']) && $role === 'admin') {
+    $p_id = intval($_POST['package_id']);
+    mysqli_query($conn, "DELETE FROM packages WHERE id=$p_id");
+    $msg = "<p class='success'>Package removed successfully.</p>";
+}
+
+// Handle employee addition (Admin only)
+if (isset($_POST['add_employee']) && $role === 'admin') {
+    $emp_name = mysqli_real_escape_string($conn, $_POST['emp_name']);
+    $emp_email = mysqli_real_escape_string($conn, $_POST['emp_email']);
+    $emp_pass = $_POST['emp_password'];
+    $emp_role = mysqli_real_escape_string($conn, $_POST['emp_role']);
+    
+    $check = mysqli_query($conn, "SELECT id FROM users WHERE email = '$emp_email'");
+    if (mysqli_num_rows($check) > 0) {
+        $msg = "<p class='error'>Email already exists.</p>";
+    } else {
+        mysqli_query($conn, "INSERT INTO users (name, email, password, role) VALUES ('$emp_name', '$emp_email', '$emp_pass', '$emp_role')");
+        $msg = "<p class='success'>Employee added successfully.</p>";
+    }
+}
+
+// Handle employee removal (Admin only)
+if (isset($_POST['remove_employee']) && $role === 'admin') {
+    $emp_id = intval($_POST['employee_id']);
+    if ($emp_id !== $user_id) { // Prevent self-deletion
+        mysqli_query($conn, "DELETE FROM users WHERE id=$emp_id");
+        $msg = "<p class='success'>Employee removed successfully.</p>";
+    } else {
+        $msg = "<p class='error'>You cannot remove yourself.</p>";
+    }
+}
+
 // Handle new package creation
 if (isset($_POST['add_package']) && ($role === 'admin' || $role === 'staff')) {
     $title       = mysqli_real_escape_string($conn, $_POST['title']);
@@ -75,7 +109,10 @@ if (isset($_POST['add_package']) && ($role === 'admin' || $role === 'staff')) {
 
         <!-- Customer area -->
         <?php if ($role === 'customer'): ?>
-            <h3 style="margin-bottom: 16px; color: #2d2d2d;">Your Bookings</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <h3 style="margin: 0; color: #2d2d2d;">Your Bookings</h3>
+                <a href="packages.php" class="btn btn-register">New Booking</a>
+            </div>
             <?php
             $sql    = "SELECT b.id, p.title, b.status, b.booking_date
                        FROM bookings b
@@ -84,13 +121,20 @@ if (isset($_POST['add_package']) && ($role === 'admin' || $role === 'staff')) {
                        ORDER BY b.id DESC";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
-                echo "<table><tr><th>Booking ID</th><th>Package</th><th>Status</th><th>Date</th></tr>";
+                echo "<table><tr><th>Booking ID</th><th>Package</th><th>Status</th><th>Date</th><th>Action</th></tr>";
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "<tr>
                             <td>{$row['id']}</td>
                             <td>{$row['title']}</td>
                             <td>{$row['status']}</td>
                             <td>{$row['booking_date']}</td>
+                            <td>
+                                <form method='POST' style='margin:0;'>
+                                    <input type='hidden' name='booking_id' value='{$row['id']}'>
+                                    <input type='hidden' name='status' value='cancelled'>
+                                    <button type='submit' name='update_booking' class='btn btn-outline' style='padding:6px 12px; font-size:13px;' " . ($row['status'] === 'cancelled' ? 'disabled' : '') . ">Cancel</button>
+                                </form>
+                            </td>
                           </tr>";
                 }
                 echo "</table>";
@@ -194,6 +238,89 @@ if (isset($_POST['add_package']) && ($role === 'admin' || $role === 'staff')) {
                 echo "<p style='color:#888;'>No queries found.</p>";
             }
             ?>
+
+            <!-- Admin Only: Manage Packages (Remove) -->
+            <?php if ($role === 'admin'): ?>
+            <h3 style="margin-top: 48px; margin-bottom: 16px; color: #2d2d2d;">Existing Packages</h3>
+            <?php
+            $sql_pkgs = "SELECT * FROM packages ORDER BY id DESC";
+            $res_pkgs = mysqli_query($conn, $sql_pkgs);
+            if (mysqli_num_rows($res_pkgs) > 0) {
+                echo "<table><tr><th>ID</th><th>Title</th><th>Destination</th><th>Price</th><th>Action</th></tr>";
+                while ($row = mysqli_fetch_assoc($res_pkgs)) {
+                    echo "<tr>
+                            <td>{$row['id']}</td>
+                            <td>{$row['title']}</td>
+                            <td>{$row['destination']}</td>
+                            <td>\${$row['price']}</td>
+                            <td>
+                                <form method='POST' style='margin:0;'>
+                                    <input type='hidden' name='package_id' value='{$row['id']}'>
+                                    <button type='submit' name='remove_package' class='btn btn-outline' style='padding:6px 12px; font-size:13px; color:#c0392b; border-color:#c0392b;' onclick=\"return confirm('Are you sure you want to remove this package?');\">Remove</button>
+                                </form>
+                            </td>
+                          </tr>";
+                }
+                echo "</table>";
+            } else {
+                echo "<p style='color:#888;'>No packages found.</p>";
+            }
+            ?>
+
+            <!-- Admin Only: Manage Employees -->
+            <h3 style="margin-top: 48px; margin-bottom: 16px; color: #2d2d2d;">Manage Employees</h3>
+            
+            <div class="form-card" style="max-width: 700px; margin: 0 0 24px 0;">
+                <form method="POST">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                        <div class="form-group">
+                            <label for="emp-name">Employee Name</label>
+                            <input type="text" id="emp-name" name="emp_name" placeholder="Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emp-email">Email</label>
+                            <input type="email" id="emp-email" name="emp_email" placeholder="Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emp-password">Password</label>
+                            <input type="text" id="emp-password" name="emp_password" placeholder="Password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emp-role">Role</label>
+                            <select id="emp-role" name="emp_role" style="width:100%; padding:14px; border:2px solid #e8ede7; border-radius:14px; font-family:Poppins,sans-serif; font-size:14px; outline:none; background:#f5f8f5;">
+                                <option value="staff">Staff</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" name="add_employee" class="btn btn-register" style="margin-top: 8px;">Add Employee</button>
+                </form>
+            </div>
+
+            <?php
+            $sql_emps = "SELECT * FROM users WHERE role IN ('staff', 'admin') ORDER BY id DESC";
+            $res_emps = mysqli_query($conn, $sql_emps);
+            if (mysqli_num_rows($res_emps) > 0) {
+                echo "<table><tr><th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Action</th></tr>";
+                while ($row = mysqli_fetch_assoc($res_emps)) {
+                    $disabled = ($row['id'] == $user_id) ? "disabled" : "";
+                    echo "<tr>
+                            <td>{$row['id']}</td>
+                            <td>{$row['name']}</td>
+                            <td>{$row['email']}</td>
+                            <td>{$row['role']}</td>
+                            <td>
+                                <form method='POST' style='margin:0;'>
+                                    <input type='hidden' name='employee_id' value='{$row['id']}'>
+                                    <button type='submit' name='remove_employee' class='btn btn-outline' style='padding:6px 12px; font-size:13px; color:#c0392b; border-color:#c0392b;' $disabled onclick=\"return confirm('Remove this employee?');\">Remove</button>
+                                </form>
+                            </td>
+                          </tr>";
+                }
+                echo "</table>";
+            }
+            ?>
+            <?php endif; ?>
 
         <?php endif; ?>
     </div>
