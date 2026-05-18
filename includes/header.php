@@ -17,12 +17,12 @@ if (session_status() == PHP_SESSION_NONE) {
     </nav>
 
     <div class="header-auth">
-        <?php if(isset($_SESSION['user_id'])): ?>
+        <?php if(isset($_SESSION['user_id'])) { ?>
             <a href="dashboard.php" class="btn btn-login">Dashboard</a>
             <a href="logout.php" class="btn btn-register">Logout</a>
-        <?php else: ?>
+        <?php } else { ?>
             <a href="login.php" class="btn btn-login">Login</a>
             <a href="register.php" class="btn btn-register">Register</a>
-        <?php endif; ?>
+        <?php } ?>
     </div>
 </header>

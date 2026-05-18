@@ -2,11 +2,18 @@
 require_once "includes/connection.php";
 session_start();
 
+// Check if the user typed something into the search bar
 $search = isset($_GET['search']) ? mysqli_real_escape_string($conn, $_GET['search']) : '';
+
+// Start building the query to fetch all packages
 $query = "SELECT * FROM packages";
-if($search) {
+
+// If there is a search term, narrow down the results to match it
+if ($search) {
     $query .= " WHERE title LIKE '%$search%' OR destination LIKE '%$search%'";
 }
+
+// Run the query to pull the matching packages from the database
 $result = mysqli_query($conn, $query);
 ?>
 <!DOCTYPE html>
@@ -21,30 +28,34 @@ $result = mysqli_query($conn, $query);
 <body class="page-body">
     <?php include "includes/header.php"; ?>
     <div class="page-container">
-        <h2 class="page-title">Available Travel Packages</h2>
+        <h2 class="page-title">Available travel packages</h2>
         <form method="GET" class="search-bar-wrapper">
-            <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search packages or destinations...">
+            <input type="text" name="search" value="<?php echo htmlspecialchars($search); ?>" placeholder="Search packages or destinations">
             <button type="submit" class="btn btn-register">Search</button>
         </form>
 
         <div class="package-grid">
-            <?php while($row = mysqli_fetch_assoc($result)): ?>
+            <?php while($row = mysqli_fetch_assoc($result)) { ?>
                 <div class="package-card">
                     <div class="package-img" style="background-image: url('<?php echo htmlspecialchars($row['image_url']); ?>');"></div>
                     <div class="package-content">
                         <h3><?php echo htmlspecialchars($row['title']); ?></h3>
-                        <p style="color: #888; margin-bottom: 8px; font-size: 13px;">📍 <?php echo htmlspecialchars($row['destination']); ?></p>
+                        <p class="text-muted-sm mb-8">📍 <?php echo htmlspecialchars($row['destination']); ?></p>
                         <div class="price">$<?php echo htmlspecialchars($row['price']); ?> <span>/ person</span></div>
                         <p class="description"><?php echo htmlspecialchars($row['description']); ?></p>
-                        <?php if(isset($_SESSION['user_id']) && $_SESSION['role'] == 'customer'): ?>
-                            <a href="book.php?id=<?php echo $row['id']; ?>" class="btn btn-register btn-block">Book Now</a>
-                        <?php elseif(!isset($_SESSION['user_id'])): ?>
-                            <a href="login.php" class="btn btn-outline btn-block">Login to Book</a>
-                        <?php endif; ?>
+                        
+                        <?php if(isset($_SESSION['user_id']) && $_SESSION['role'] == 'customer') { ?>
+                            <a href="book.php?id=<?php echo $row['id']; ?>" class="btn btn-register btn-block">Book now</a>
+                        <?php } elseif(!isset($_SESSION['user_id'])) { ?>
+                            <a href="login.php" class="btn btn-outline btn-block">Login to book</a>
+                        <?php } ?>
                     </div>
                 </div>
-            <?php endwhile; ?>
-            <?php if(mysqli_num_rows($result) == 0) echo "<p style='color:#888;'>No packages found matching your search.</p>"; ?>
+            <?php } ?>
+            
+            <?php if(mysqli_num_rows($result) == 0) { 
+                echo "<p class='text-muted'>No packages found matching your search.</p>"; 
+            } ?>
         </div>
     </div>
     <?php include "includes/footer.php"; ?>

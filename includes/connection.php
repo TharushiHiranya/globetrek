@@ -37,6 +37,7 @@ if (mysqli_num_rows($result) == 0) {
         description TEXT NOT NULL,
         price       DECIMAL(10,2) NOT NULL,
         image_url   VARCHAR(255),
+        is_featured TINYINT(1) DEFAULT 0,
         created_at  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )");
 
@@ -69,22 +70,22 @@ if (mysqli_num_rows($result) == 0) {
     ");
 
     // Add packages
-    mysqli_query($conn, "INSERT INTO packages (title, destination, description, price, image_url) VALUES
+    mysqli_query($conn, "INSERT INTO packages (title, destination, description, price, image_url, is_featured) VALUES
         ('Explore Machu Picchu', 'Peru',
          'A 5-day adventure through the ancient Inca citadel of Machu Picchu, trekking breathtaking mountain trails with expert local guides.',
-         1200.00, 'images/destinations/machu.jpg'),
+         1200.00, 'images/destinations/machu.jpg', 1),
         ('Santorini Escape', 'Greece',
          'Unwind in the iconic whitewashed villages of Santorini over 3 days of luxury sea-view stays and Mediterranean cuisine.',
-         850.00,  'images/destinations/santorini.jpg'),
+         850.00,  'images/destinations/santorini.jpg', 1),
         ('Costa Rica Wildlife', 'Costa Rica',
          'A 7-day eco-adventure through lush rainforests, volcanic landscapes, and the richest biodiversity on the planet.',
-         950.00,  'images/destinations/costa_rica.jpg'),
+         950.00,  'images/destinations/costa_rica.jpg', 1),
         ('Tokyo City Explorer', 'Japan',
          'Spend 6 days discovering neon-lit streets, ancient temples, world-class cuisine, and the timeless culture of Tokyo.',
-         1500.00, 'images/destinations/tokyo.jpg'),
+         1500.00, 'images/destinations/tokyo.jpg', 0),
         ('Safari in Serengeti', 'Tanzania',
          'Witness the spectacular Great Migration on a 4-day safari across the vast Serengeti plains at golden hour.',
-         2200.00, 'images/destinations/serengeti.jpg')
+         2200.00, 'images/destinations/serengeti.jpg', 0)
     ");
 
     // Add bookings
@@ -101,4 +102,10 @@ if (mysqli_num_rows($result) == 0) {
 } else {
     // Use the existing database
     mysqli_select_db($conn, $dbname);
+    
+    // Ensure is_featured column exists for backward compatibility
+    $col_check = mysqli_query($conn, "SHOW COLUMNS FROM packages LIKE 'is_featured'");
+    if (mysqli_num_rows($col_check) == 0) {
+        mysqli_query($conn, "ALTER TABLE packages ADD COLUMN is_featured TINYINT(1) DEFAULT 0");
+    }
 }

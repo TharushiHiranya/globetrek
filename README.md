@@ -93,10 +93,10 @@ mysql -u root globetrek < seed.sql
 
 The `docs/` folder has the full picture:
 
-- [`docs/design.md`](docs/design.md) — color system, fonts, components
-- [`docs/database.md`](docs/database.md) — schema and seeding
-- [`docs/features.md`](docs/features.md) — what's built, what's planned
-- [`docs/requirements.md`](docs/requirements.md) — assessment brief and grading notes
+- [`docs/design.md`](docs/design.md): color system, fonts, components
+- [`docs/database.md`](docs/database.md): schema and seeding
+- [`docs/features.md`](docs/features.md): what's built, what's planned
+- [`docs/requirements.md`](docs/requirements.md): assessment brief and grading notes
 
 ---
 

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  GlobeTrek Adventures — Sitemap
+  Style: hierarchical tree (Homepage → Nav sections → Sub-pages)
+  Connectors: orthogonal (straight lines, 90-degree turns, no curves)
+  Open with: https://app.diagrams.net or draw.io desktop app
+-->
+<mxGraphModel dx="1422" dy="762" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- ROOT: Homepage                                 -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <mxCell id="home" value="HOMEPAGE" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontColor=#333333;fontSize=13;fontStyle=1;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="434" y="30" width="180" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- LEVEL 1: Navigation sections                  -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <mxCell id="nav-packages" value="PACKAGES" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#333333;fontSize=12;fontStyle=1;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="60" y="160" width="180" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="nav-dashboard" value="DASHBOARD" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#333333;fontSize=12;fontStyle=1;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="310" y="160" width="180" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="nav-contact" value="CONTACT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontColor=#333333;fontSize=12;fontStyle=1;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="560" y="160" width="180" height="50" as="geometry" />
+    </mxCell>
+
+    <mxCell id="nav-account" value="ACCOUNT" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#333333;fontSize=12;fontStyle=1;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="810" y="160" width="180" height="50" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- LEVEL 2: Sub-pages under PACKAGES             -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <mxCell id="p-browse" value="Browse packages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="60" y="290" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <mxCell id="p-search" value="Search results" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="60" y="354" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <mxCell id="p-book" value="Book a package" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="60" y="418" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- LEVEL 2: Sub-pages under DASHBOARD            -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <mxCell id="d-mybookings" value="My bookings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="310" y="290" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <mxCell id="d-managebookings" value="Manage bookings" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="310" y="354" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <mxCell id="d-addpackage" value="Add package" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="310" y="418" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <mxCell id="d-employees" value="Manage employees" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="310" y="482" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- LEVEL 2: Sub-pages under CONTACT              -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <mxCell id="c-form" value="Contact form" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="560" y="290" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <mxCell id="c-queries" value="View queries (staff)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="560" y="354" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- LEVEL 2: Auth chain (purple, right column)    -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <mxCell id="a-login" value="Login" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="810" y="290" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <mxCell id="a-register" value="Register" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="810" y="354" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <mxCell id="a-logout" value="Logout" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontColor=#333333;fontSize=11;arcSize=20;" vertex="1" parent="1">
+      <mxGeometry x="810" y="418" width="180" height="44" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- EDGES: Root → Level 1                         -->
+    <!-- All orthogonal, no curves                     -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <mxCell id="e-home-packages" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#b85450;strokeWidth=2;" edge="1" source="home" target="nav-packages" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e-home-dashboard" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#b85450;strokeWidth=2;" edge="1" source="home" target="nav-dashboard" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e-home-contact" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#b85450;strokeWidth=2;" edge="1" source="home" target="nav-contact" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e-home-account" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#b85450;strokeWidth=2;" edge="1" source="home" target="nav-account" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- EDGES: PACKAGES → sub-pages                   -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <mxCell id="e-pkg-browse" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#6c8ebf;strokeWidth=1.5;" edge="1" source="nav-packages" target="p-browse" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e-browse-search" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#82b366;strokeWidth=1.5;" edge="1" source="p-browse" target="p-search" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e-search-book" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#82b366;strokeWidth=1.5;" edge="1" source="p-search" target="p-book" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- EDGES: DASHBOARD → sub-pages                  -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <mxCell id="e-dash-mybookings" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#6c8ebf;strokeWidth=1.5;" edge="1" source="nav-dashboard" target="d-mybookings" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e-my-manage" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#82b366;strokeWidth=1.5;" edge="1" source="d-mybookings" target="d-managebookings" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e-manage-add" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#82b366;strokeWidth=1.5;" edge="1" source="d-managebookings" target="d-addpackage" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e-add-emp" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#82b366;strokeWidth=1.5;" edge="1" source="d-addpackage" target="d-employees" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- EDGES: CONTACT → sub-pages                    -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <mxCell id="e-contact-form" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#6c8ebf;strokeWidth=1.5;" edge="1" source="nav-contact" target="c-form" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e-form-queries" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#82b366;strokeWidth=1.5;" edge="1" source="c-form" target="c-queries" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <!-- ══════════════════════════════════════════════ -->
+    <!-- EDGES: ACCOUNT → auth chain                   -->
+    <!-- ══════════════════════════════════════════════ -->
+
+    <mxCell id="e-account-login" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#9673a6;strokeWidth=1.5;" edge="1" source="nav-account" target="a-login" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e-login-register" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#9673a6;strokeWidth=1.5;" edge="1" source="a-login" target="a-register" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+    <mxCell id="e-register-logout" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#9673a6;strokeWidth=1.5;" edge="1" source="a-register" target="a-logout" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+
+  </root>
+</mxGraphModel>
